@@ -12,8 +12,10 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         GetComponent<NavMeshAgent>().SetDestination(player.position);
-
-        if (transform.position == player.position)
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player")
         {
             AttackPlayer();
         }
