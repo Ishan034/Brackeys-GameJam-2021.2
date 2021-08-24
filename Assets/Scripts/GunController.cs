@@ -39,8 +39,8 @@ public class GunController : MonoBehaviour
         newWeaponRotation = Vector3.SmoothDamp(newWeaponRotation, targetWeaponRotation, ref newWeaponRotationVelocity, SwaySmoothing);
 
 
-        targetWeaponMovementRotation.z = MovementSway.x * Input.GetAxis("Horizontal");
-        targetWeaponMovementRotation.x = MovementSway.y * Input.GetAxis("Vertical");
+        targetWeaponMovementRotation.z = MovementSway.x * playerMovement.MovementInput.x;
+        targetWeaponMovementRotation.x = MovementSway.y * playerMovement.MovementInput.y;
 
         targetWeaponMovementRotation = Vector3.SmoothDamp(targetWeaponMovementRotation, Vector3.zero, ref targetWeaponMovementRotationVelocity, MovementSwaySmoothing);
         newWeaponMovementRotation = Vector3.SmoothDamp(newWeaponMovementRotation, targetWeaponMovementRotation, ref newWeaponMovementRotationVelocity, MovementSwaySmoothing);

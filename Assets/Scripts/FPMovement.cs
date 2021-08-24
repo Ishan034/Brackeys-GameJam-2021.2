@@ -6,6 +6,8 @@ public class FPMovement : MonoBehaviour
 {
     public CharacterController controller;
 
+    public Vector2 MovementInput { get; private set; }
+
     public float speed;
     public float gravity = 9.8f;
     public float jumpHeight;
@@ -27,10 +29,9 @@ public class FPMovement : MonoBehaviour
             velocity.y = -1f;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        MovementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = transform.right * MovementInput.x + transform.forward * MovementInput.y;
 
         controller.Move(move * speed * Time.deltaTime);
 

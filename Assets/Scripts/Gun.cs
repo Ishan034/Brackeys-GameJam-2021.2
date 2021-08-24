@@ -14,6 +14,8 @@ public class Gun : MonoBehaviour
     private bool isReloading = false;
 
     public Camera cam;
+    public ParticleSystem LaserBeam;
+    public ParticleSystem muzzleFlash;
 
     void Start()
     {
@@ -47,6 +49,8 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
 
         currentAmmo--;
+        muzzleFlash.Play();
+        LaserBeam.Play();
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
