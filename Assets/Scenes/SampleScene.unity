@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 758101918}
   - component: {fileID: 758101917}
   - component: {fileID: 758101916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -394,6 +395,20 @@ Transform:
   m_Father: {fileID: 1153598204}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ef4ad11eab721418fbb722c6d9d73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensivity: 100
+  player: {fileID: 1153598204}
 --- !u!1 &1153598196
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,9 +422,9 @@ GameObject:
   - component: {fileID: 1153598202}
   - component: {fileID: 1153598205}
   - component: {fileID: 1153598200}
-  - component: {fileID: 1153598199}
   - component: {fileID: 1153598198}
   - component: {fileID: 1153598197}
+  - component: {fileID: 1153598199}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -426,10 +441,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1153598196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 215ce8008abb6e74cb9971809b8fbe10, type: 3}
+  m_Script: {fileID: 11500000, guid: d13d29527c06eeb4fb36f9b0c2d2e261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  startHealth: 20
+  damage: 20
 --- !u!114 &1153598198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,20 +459,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSelected: 0
---- !u!114 &1153598199
-MonoBehaviour:
+--- !u!136 &1153598199
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153598196}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ef4ad11eab721418fbb722c6d9d73c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensivity: 300
-  player: {fileID: 1153598204}
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1153598200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,10 +486,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1153598205}
-  speed: 3
-  gravity: -9.8
-  jumpHeight: 3
-  checkPos: {fileID: 1153598204}
+  speed: 15
+  gravity: -19.6
+  jumpHeight: 7
+  checkPos: {fileID: 1210391456}
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -534,11 +550,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153598196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.98, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
   - {fileID: 1300909036}
+  - {fileID: 1210391456}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -560,6 +577,36 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1210391455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1210391456}
+  m_Layer: 0
+  m_Name: checkPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1210391456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210391455}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1153598204}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1300909035
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,9 +670,10 @@ GameObject:
   - component: {fileID: 1323079205}
   - component: {fileID: 1323079209}
   - component: {fileID: 1323079204}
+  - component: {fileID: 1323079210}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -643,6 +691,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1153598204}
+  playerGO: {fileID: 1153598196}
+  damage: 100
 --- !u!136 &1323079205
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -714,7 +764,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323079203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.91, z: 5.68}
+  m_LocalPosition: {x: 0, y: 0.5, z: 5.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -742,3 +792,16 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1323079210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323079203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215ce8008abb6e74cb9971809b8fbe10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50

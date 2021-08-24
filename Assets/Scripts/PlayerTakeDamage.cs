@@ -1,22 +1,40 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerTakeDamage : MonoBehaviour
 {
-    public float health;
+    [SerializeField] private float startHealth;
+    private float currentHealth;
+    [SerializeField] float damage;
 
-    public void DamageHealth(float amount)
+    private void Start()
     {
-        health -= amount;
+        currentHealth = startHealth;
+    }
 
-        if (health <= 0)
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("enemy"))
         {
-            Restart();
+            RemovePlayerHealth(damage);
         }
     }
 
-    void Restart()
+    private void RemovePlayerHealth(float damage)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
