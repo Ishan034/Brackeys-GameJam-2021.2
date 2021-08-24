@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    private float mouseY;
-    private float mouseX;
+    public float mouseY { get; private set; }
+    public float mouseX { get; private set; }
     public float mouseSensivity;
     private float xRotation = 0f;
 

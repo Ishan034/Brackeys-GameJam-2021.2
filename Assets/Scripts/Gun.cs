@@ -30,12 +30,13 @@ public class Gun : MonoBehaviour
 
         if (currentAmmo <= 0)
         {
-           StartCoroutine(Reload());
+            StartCoroutine(Reload());
             return;
         }
 
         if (Input.GetMouseButton(0) && Time.time > nextTimeToFire)
         {
+            print("Pew"); // Temp
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
         }
@@ -68,6 +69,6 @@ public class Gun : MonoBehaviour
 
         currentAmmo = maxAmmo;
 
-        isReloading = true;
+        isReloading = false;
     }
 }

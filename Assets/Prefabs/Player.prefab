@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc70dedc676904fa5d91c9e4236e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensivity: 100
+  mouseSensivity: 500
   player: {fileID: 3632843739946350587}
 --- !u!1 &3632843739596080504
 GameObject:
@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 3632843739946350588}
   - component: {fileID: 3632843739946350589}
   - component: {fileID: 8704589213584447220}
+  - component: {fileID: 1507396948}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -329,7 +330,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13d29527c06eeb4fb36f9b0c2d2e261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 50
+--- !u!114 &1507396948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632843739946350590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d486293443301a4e9d45dc42b61cf4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 861314461}
+  playerLook: {fileID: 3632843738831045422}
+  SwayAmount: 200
+  SwaySmoothing: 0.1
+  SwayResetSmoothing: 0.1
+  swayClampX: 5
+  swayClampY: 5
 --- !u!1 &3632843740828027619
 GameObject:
   m_ObjectHideFlags: 0
