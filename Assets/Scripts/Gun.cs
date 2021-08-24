@@ -21,7 +21,8 @@ public class Gun : MonoBehaviour
     }
 
     void Update()
-    {
+    { 
+
         if (isReloading)
         {
             return;
@@ -29,7 +30,7 @@ public class Gun : MonoBehaviour
 
         if (currentAmmo <= 0)
         {
-            StartCoroutine(Reload());
+           StartCoroutine(Reload());
             return;
         }
 
@@ -67,6 +68,6 @@ public class Gun : MonoBehaviour
 
         currentAmmo = maxAmmo;
 
-        isReloading = true;  // Is this supposed to be false?
+        isReloading = true;
     }
 }
