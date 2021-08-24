@@ -204,11 +204,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 3632843738955779978}
   playerLook: {fileID: 229969903}
+  playerMovement: {fileID: 0}
   SwayAmount: 200
   SwaySmoothing: 0.1
   SwayResetSmoothing: 0.1
-  swayClampX: 5
-  swayClampY: 5
+  MovementSwaySmoothing: 0.1
+  MovementSway: {x: 5, y: 2}
+  swayClamp: {x: 5, y: 5}
+--- !u!4 &20566296 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3632843739946350587, guid: 685d9651918aa9e499d62f5867c8b7bc, type: 3}
+  m_PrefabInstance: {fileID: 20566289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &196014608
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702da8a859c6b99479d9f52d77d1af68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 20566296}
   damage: 10
   offset: {x: 0.5, y: 0, z: 0.5}
 --- !u!195 &1763635396
@@ -877,19 +884,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ef58836d063f2ee43966afe47180a63f, type: 3}
   m_PrefabInstance: {fileID: 762669059}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &3632843738955779977
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3632843738955779980}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3632843738955779978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -932,7 +926,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3632843738955779979}
-  - component: {fileID: 3632843738955779977}
   - component: {fileID: 3632843738955779978}
   m_Layer: 0
   m_Name: PlasmaRifle
