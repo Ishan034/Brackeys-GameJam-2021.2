@@ -35,9 +35,14 @@ public class FPMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
 
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            AudioManager.instance.Play("PlayerFootSteps");
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            AudioManager.instance.Play("Jump");
+            AudioManager.instance.Play("PlayerJump");
 
             velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
         }
