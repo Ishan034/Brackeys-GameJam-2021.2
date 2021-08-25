@@ -698,16 +698,19 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5afe6b03acb3c274ca13e38b2771beb8, type: 3}
     volume: 0.3
     pitch: 1
+    loop: 1
     source: {fileID: 0}
   - Name: Laser_shoot
-    clip: {fileID: 8300000, guid: 2b9589d0cd71f634e97b04e9a517a3c1, type: 3}
+    clip: {fileID: 8300000, guid: ef030fa2bc86ff7499b9c278e7dbf74f, type: 3}
     volume: 0.3
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - Name: Jump
     clip: {fileID: 8300000, guid: cd8cc684f79009b44b9c032089a4c8e0, type: 3}
     volume: 0.3
     pitch: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!1 &1372689886
 GameObject:
@@ -1022,8 +1025,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   range: 250
-  fireRate: 75
-  maxAmmo: 50
+  fireRate: 3
+  maxAmmo: 20
   reloadTime: 2
   cam: {fileID: 229969905}
   LaserBeam: {fileID: 980788176}
