@@ -69,7 +69,7 @@ MonoBehaviour:
   range: 250
   fireRate: 3
   maxAmmo: 20
-  reloadTime: 2
+  reloadTime: 4
   cam: {fileID: 0}
   LaserBeam: {fileID: 8663365765014621210}
   muzzleFlash: {fileID: 8663365764441212419}
