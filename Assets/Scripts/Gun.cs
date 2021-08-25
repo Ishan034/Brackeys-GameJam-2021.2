@@ -16,6 +16,7 @@ public class Gun : MonoBehaviour
     public Camera cam;
     public ParticleSystem LaserBeam;
     public ParticleSystem muzzleFlash;
+    public Animator weaponAnimator;
 
     void Start()
     {
@@ -38,7 +39,6 @@ public class Gun : MonoBehaviour
 
         if (Input.GetMouseButton(0) && Time.time > nextTimeToFire)
         {
-            print("Pew"); // Temp
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
         }
@@ -52,6 +52,7 @@ public class Gun : MonoBehaviour
 
         muzzleFlash.Play();
         LaserBeam.Play();
+        weaponAnimator.SetTrigger("Shoot");
         AudioManager.instance.Play("Laser_shoot");
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
@@ -69,8 +70,8 @@ public class Gun : MonoBehaviour
     IEnumerator Reload()
     {
         isReloading = true;
+        weaponAnimator.SetTrigger("Reload");
 
-        print("Reloading................");
         yield return new WaitForSeconds(reloadTime);
 
         currentAmmo = maxAmmo;
