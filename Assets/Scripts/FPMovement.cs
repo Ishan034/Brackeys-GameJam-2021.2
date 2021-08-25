@@ -37,6 +37,8 @@ public class FPMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+            AudioManager.instance.Play("Jump");
+
             velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
         }
 
