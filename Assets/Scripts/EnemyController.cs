@@ -16,9 +16,9 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-            if (other.CompareTag("Player"))
-            {
-                player.GetComponent<PlayerTakeDamage>().DamageHealth(damage);
-            }
+        if (other.CompareTag("Player"))
+        {
+            player.GetComponent<PlayerTakeDamage>().DamageHealth(damage);
+        }
     }
 }
