@@ -86,6 +86,7 @@ MonoBehaviour:
   player: {fileID: 0}
   damage: 50
   offset: {x: 0.5, y: 0, z: 0.5}
+  range: 15
 --- !u!114 &2765177056270864064
 MonoBehaviour:
   m_ObjectHideFlags: 0
