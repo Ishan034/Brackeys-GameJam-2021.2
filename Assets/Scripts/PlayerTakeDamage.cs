@@ -10,6 +10,8 @@ public class PlayerTakeDamage : MonoBehaviour
     public Slider healthBar;
     public TMP_Text healthCounter;
 
+    public GameObject deathScreen;
+
     private void Update()
     {
         healthBar.value = health;
@@ -28,6 +30,8 @@ public class PlayerTakeDamage : MonoBehaviour
 
     void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
+        deathScreen.SetActive(true);
     }
 }
