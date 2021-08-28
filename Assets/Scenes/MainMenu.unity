@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1237,3 +1237,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cdcff14d25e9946981634310d35653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5717002774307334436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5717002774307334438}
+  - component: {fileID: 5717002774307334437}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &5717002774307334437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5717002774307334436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57caa9f1c29c7b54b8e1b1aca59d907c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuMusic: Track_2
+  gameMusic: Track_1
+  sounds:
+  - Name: PlayerFootSteps
+    clip: {fileID: 8300000, guid: 588aa28bbfb567148b225a42c61b9f76, type: 3}
+    volume: 0.7
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - Name: PlayerJump
+    clip: {fileID: 8300000, guid: cd8cc684f79009b44b9c032089a4c8e0, type: 3}
+    volume: 1
+    pitch: 2
+    loop: 0
+    source: {fileID: 0}
+  - Name: Laser
+    clip: {fileID: 8300000, guid: ef030fa2bc86ff7499b9c278e7dbf74f, type: 3}
+    volume: 0.7
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - Name: Track_1
+    clip: {fileID: 8300000, guid: 5afe6b03acb3c274ca13e38b2771beb8, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - Name: Track_2
+    clip: {fileID: 8300000, guid: 2fbab6dc2e53bea46a20567fc9fb5726, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &5717002774307334438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5717002774307334436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 52.458363, y: 17.313477, z: -12.544918}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

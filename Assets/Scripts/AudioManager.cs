@@ -1,14 +1,20 @@
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+    public string mainMenuMusic;
+    public string gameMusic;
 
     public Sound[] sounds;
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+        SceneManager.activeSceneChanged += ChangeMusic;
+
         if (instance == null)
             instance = this;
         else
@@ -29,9 +35,17 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void ChangeMusic(Scene from, Scene to)
     {
-        Play("Track_1"); // Play at start
+        instance.StopPlayAll();
+        if (to.buildIndex == 0)
+        {
+            instance.Play(mainMenuMusic);
+        }
+        else if (to.buildIndex == 1)
+        {
+            instance.Play(gameMusic);
+        }
     }
 
     public void Play(string name)
@@ -43,5 +57,13 @@ public class AudioManager : MonoBehaviour
             return;
         }
         sound.source.Play();
+    }
+
+    public void StopPlayAll()
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            sounds[i].source.Stop();
+        }
     }
 }
