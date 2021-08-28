@@ -11,6 +11,8 @@ public class FPMovement : MonoBehaviour
     public float speed;
     public float gravity = 9.8f;
     public float jumpHeight;
+    public float stepSoundInterval = 0.2f;
+    private bool playSteps = false;
 
     public Transform checkPos;
     private float checkRadius = 0.1f;
@@ -30,6 +32,16 @@ public class FPMovement : MonoBehaviour
         }
 
         MovementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (isGrounded && (MovementInput.x != 0 || MovementInput.y != 0) && !playSteps)
+        {
+            playSteps = true;
+            StartCoroutine(Footsteps());
+        }
+        else if ( (!isGrounded || (MovementInput.x == 0 && MovementInput.y == 0) ) && playSteps)
+        {
+            playSteps = false;
+            StopAllCoroutines();
+        }
 
         Vector3 move = transform.right * MovementInput.x + transform.forward * MovementInput.y;
 
@@ -37,7 +49,7 @@ public class FPMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            AudioManager.instance.Play("PlayerJump");
+            AudioManager.Instance.Play("PlayerJump");
 
             velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
         }
@@ -45,5 +57,13 @@ public class FPMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private IEnumerator Footsteps()
+    {
+        AudioManager.Instance.Play("PlayerFootSteps");
+
+        yield return new WaitForSeconds(stepSoundInterval);
+        StartCoroutine(Footsteps());
     }
 }

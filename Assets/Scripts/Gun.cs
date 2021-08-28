@@ -53,7 +53,7 @@ public class Gun : MonoBehaviour
         muzzleFlash.Play();
         LaserBeam.Play();
         weaponAnimator.SetTrigger("Shoot");
-        AudioManager.instance.Play("Laser");
+        AudioManager.Instance.Play("Laser");
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {

@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    private static AudioManager _instance;
+    public static AudioManager Instance { get { return _instance; } }
     public string mainMenuMusic;
     public string gameMusic;
 
@@ -15,12 +16,13 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         SceneManager.activeSceneChanged += ChangeMusic;
 
-        if (instance == null)
-            instance = this;
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
         else
         {
-            Destroy(this);
-            return;
+            _instance = this;
         }
 
         foreach (Sound sound in sounds)
@@ -37,14 +39,14 @@ public class AudioManager : MonoBehaviour
 
     private void ChangeMusic(Scene from, Scene to)
     {
-        instance.StopPlayAll();
+        Instance.StopPlayAll();
         if (to.buildIndex == 0)
         {
-            instance.Play(mainMenuMusic);
+            Instance.Play(mainMenuMusic);
         }
         else if (to.buildIndex == 1)
         {
-            instance.Play(gameMusic);
+            Instance.Play(gameMusic);
         }
     }
 
