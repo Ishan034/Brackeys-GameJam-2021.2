@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class Gun : MonoBehaviour
 {
@@ -18,13 +19,16 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public Animator weaponAnimator;
 
+    public TMP_Text ammoCounter;
+
     void Start()
     {
         currentAmmo = maxAmmo;
     }
 
     void Update()
-    { 
+    {
+        ammoCounter.text = currentAmmo.ToString();
 
         if (isReloading)
         {
